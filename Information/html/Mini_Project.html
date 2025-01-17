@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>
+        Real-time Sensor Data
+    </title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
+    <style>
+        .bd{
+            border: 2;
+            border-color: #0000FF;
+        }
+        .head {
+            text-align: center;
+            font-family: Impact;
+            color: #2b2a2a;
+            font-size: 30px;
+        }
+        .frame {
+            border: 1px solid #cccccc;
+        }
+        .h-container{
+            height: 30px;
+            }
+        .h2-container{
+            height: 20px;
+            }
+
+            
+        .li-text-glow {
+        list-style: none;
+        }
+
+        .ul-text-glow {
+        display: flex;
+        gap: -10px;
+        }
+
+        .text-white {
+            color: white;
+        }
+
+        .label-text-glow {
+        position: relative;
+        }
+
+        .input-text-glow[type="checkbox"] {
+        position: absolute;
+        opacity: 0;
+        cursor: pointer;
+        height: 80px;
+        width: 80px;
+        z-index: 100;
+        }
+
+        .div-text-glow {
+        position: relative;
+        height: 80px;
+        width: 80px;
+        background: #18191f;
+        color: #555;
+        display: flex;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 46px;
+        cursor: pointer;
+        margin: 0 4px;
+        border-radius: 20px;
+        box-shadow: -1px -1px 4px rgba(255, 255, 255, 0.05), 4px 4px 6px rgba(0, 0, 0, 0.2),
+                    inset -1px -1px 4px rgba(255, 255, 255, 0.05),
+                    inset 1px 1px 1px rgba(0, 0, 0, 0.1);
+        }
+
+        @keyframes glow {
+        0% {
+            filter: hue-rotate(0deg);
+        }
+        100% {
+            filter: hue-rotate(360deg);
+        }
+        }
+
+        .input-text-glow[type="checkbox"]:checked~.div-text-glow {
+        box-shadow: inset 0 0 2px rgba(255, 255, 255, 0.05),
+                    inset 4px 4px 6px rgba(0, 0, 0, 0.2);
+        color: yellow;
+        text-shadow: 0 0 15px yellow, 0 0 25px yellow;
+        animation: glow 1.5s linear infinite;
+        }
+
+        .bg-img{
+            background-image: url('https://static.thairath.co.th/media/dFQROr7oWzulq5Fa5K3y7USRmxhTYAK50i3KMvlrDyFUXUgAYPo53YijyEX5RQkUfcw.jpg');
+        }
+
+        .bg-custom1 {
+            background-color: rgb(202, 204, 204);
+        }
+
+        .bg-custom2 {
+            background-color: #F5F5F5;
+        }
+        .bg-custom3 {
+            background-color: #d4d4d4;
+        }
+        .bg-custom4 {
+            background-color: #ccc5c5;
+        }
+    </style>
+</head>
+<body class="bg-img">
+
+    <!--Start Value-->
+    <nav class="navbar navbar-expand-lg navbar-light bg-dark" style="height: 80px;">
+        <a class="navbar-brand text-white" href="#">Real-Time Sensor</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+      
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+          <ul class="navbar-nav mr-auto">
+            <li class="nav-item active">
+              <a class="nav-link text-white" href="Mini_Project.html">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link text-white" href="Member.html">Member</a>
+            </li>
+          </ul>
+          <form class="form-inline my-2 my-lg-0">
+            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+            <button class="btn btn-outline-success my-2 my-sm-0 text-white" type="submit">Search</button>
+          </form>
+        </div>
+      </nav>
+
+
+      <div class="h-container"></div>
+      <div style="text-align: center;">
+        <ul class="ul-text-glow label-text-glow" style="margin-left: 60px;">
+            <li class="col-mb-1 col-lg-1 col-sm-1" style="color: #33495D;">
+                <img src="https://i.pinimg.com/originals/bc/f3/a3/bcf3a371b9303c27752e1109e96a2fe6.gif" width="150%">
+            </li>
+            <li class="li-text-glow col-mb-1  col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked=""/>
+                <div class="div-text-glow ">D</div>
+            </li >
+            <li class="li-text-glow col-mb-1  col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">a</div>
+            </li>
+            <li class="li-text-glow col-mb-1 col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">s</div>
+            </li>
+            <li class="li-text-glow col-mb-1 col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">h</div>
+            </li>
+            <li class="li-text-glow col-mb-1 col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked=""/>
+                <div class="div-text-glow">b</div>
+            </li>
+            <li class="li-text-glow col-mb-1 col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">o</div>
+            </li>
+            <li class="li-text-glow col-mb-1  col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">a</div>
+            </li>
+            <li class="li-text-glow col-mb-1  col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked=""/>
+                <div class="div-text-glow">r</div>
+            </li>
+            <li class="li-text-glow col-mb-1  col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">d</div>
+            </li>
+            <li class="col-mb-1  col-lg-1 col-sm-1">
+                <img src="https://graphics.straitstimes.com/STI/STIMEDIA/Interactives/2017/09/are-you-ready-for-smart-nation-singapore/images/drone-intro.gif" width="230%">
+            </li>
+        </ul>
+      </div>
+
+      <div class="h-container"></div>
+      <div style="text-align: center;">
+        <ul class="ul-text-glow label-text-glow" style="margin-left: 235px;">
+            <li class="li-text-glow col-mb-1  col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked=""/>
+                <div class="div-text-glow ">S</div>
+            </li >
+            <li class="li-text-glow col-mb-1  col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">m</div>
+            </li>
+            <li class="li-text-glow col-mb-1 col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">a</div>
+            </li>
+            <li class="li-text-glow col-mb-1 col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">r</div>
+            </li>
+            <li class="li-text-glow col-mb-1 col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked=""/>
+                <div class="div-text-glow">t</div>
+            </li>
+            <li style="width: 50px;"></li>
+            <li class="li-text-glow col-mb-1 col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">B</div>
+            </li>
+            <li class="li-text-glow col-mb-1  col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked="">
+                <div class="div-text-glow">i</div>
+            </li>
+            <li class="li-text-glow col-mb-1  col-lg-1 col-sm-1">
+                <input class="input-text-glow" type="checkbox" checked=""/>
+                <div class="div-text-glow">n</div>
+            </li>
+        </ul>
+      </div>
+
+
+
+
+    <div class="h-container"></div>
+    <div class="container-fluid">
+        <div class="row">
+                <!--Start graph-->
+                <div class="col-md-7">
+                    <!--<div class="container-fluid bg-custom1">
+                        <div class="h-container"></div>
+                        <div class="container-fluid head">
+                            
+                                <iframe width="600" height="260" src="https://thingspeak.com/channels/2465859/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=60&type=line&update=15"></iframe>
+                            
+                        </div>
+                    </div>-->
+                    <!--graph 1 start-->
+                    <div class="card">
+                        <div class="card-body bg-custom2" style="text-align: center;">
+                          <h5 class="card-title">Graph showing information about trash status [Full , Not Full]</h5>
+                          <p class="card-text">
+                            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2465859/charts/1?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=20&title=Sensor+Top&type=line"></iframe>
+                          </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body bg-custom3">
+                          <h5 class="card-title">
+                            <img src="https://cdn-icons-png.flaticon.com/512/5957/5957428.png" width="8%">
+                            Explain the graph
+                        </h5>
+                          <p class="card-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;This graph shows how much trash is about to fill up. By our sensors, we detect the area of the tank lid. Please take your trash and throw it away.
+                          </p>
+                        </div>
+                    </div>
+                    <!--graph 1 End-->
+
+                    <!--graph 2 Start-->
+                      <div class="h2-container"></div>
+                      <div class="card">
+                        <div class="card-body bg-custom2" style="text-align: center;">
+                          <h5 class="card-title">Graph showing information about trash status [Middle level , Not]</h5>
+                          <p class="card-text">
+                            <iframe width="450" height="260" style="border: 1px solid #cccccc;" src="https://thingspeak.com/channels/2465859/charts/2?bgcolor=%23ffffff&color=%23d62020&dynamic=true&results=20&title=Sensor+Middle&type=line"></iframe>
+                          </p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body bg-custom3">
+                            <h5 class="card-title">
+                                <img src="https://cdn-icons-png.flaticon.com/512/5957/5957428.png" width="8%">
+                                Explain the graph
+                            </h5>
+                          <p class="card-text">
+                            &nbsp;&nbsp;&nbsp;&nbsp;This graph shows the amount of trash that can be filled at half a bin. The sensor will detect the area in the middle of the tank. Now your garbage is more than half the tank.
+                          </p>
+                        </div>
+                    </div>
+                </div>
+                <!--graph 2 End-->
+                
+        
+            <!--Start Value-->
+            <div class="col-md-5">
+                <!--Start container 8-1-->
+                <div class="container-fluid">
+                    <div class="card">
+                        <p class="card-text head bg-custom2" id="check-bin-1">
+                            <!-- Picture will be displayed here -->
+                        </p>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body bg-custom3">
+                          <h5 class="card-title">
+                            <img src="https://cdn-icons-png.flaticon.com/512/4785/4785997.png" width="7%">
+                            Bin Status
+                          </h5>
+                          <p class="card-text head bg-custom4" id="dataCell-2">
+                                <!-- Data will be displayed here -->
+                          </p>
+                        </div>
+                    </div>
+
+                </div>
+                <!--end container 8-1-->
+
+                <!--Start container 8-2-->
+                <div class="h-container"></div>
+                <div class="container-fluid">
+                    <div class="card">
+                        <div class="card-body bg-custom2">
+                            <h5 class="card-title">
+                                <img src="https://h5p.org/sites/default/files/status-icon-page_0.png" width="7%">
+                                Sensor raw data from sensor Full or not?
+                            </h5>
+                            <table>
+                                <tr>
+                                    <td style="width: 25%;">
+                                        <img src="https://cdn.icon-icons.com/icons2/570/PNG/512/document_9_icon-icons.com_54619.png?fbclid=IwAR2mZKM0v4UGZny6HPCWrL6QrMAtarlcipSc1w8GyeeVwznwtnVy3sxturk" width="50%">
+                                    </td>
+                                    <td style="width: 50%;">
+                                        <p class="card-text head pop-up" id="dataCell-1">
+                                            <!-- Data will be displayed here -->
+                                        </p>
+                                    </td>
+                                    <td style="width: 25%;text-align: right;">
+                                        <img src="https://cdn.icon-icons.com/icons2/570/PNG/512/document_9_icon-icons.com_54619.png?fbclid=IwAR2mZKM0v4UGZny6HPCWrL6QrMAtarlcipSc1w8GyeeVwznwtnVy3sxturk" width="50%">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="h-container"></div>
+                    <div class="card">
+                        <div class="card-body bg-custom2">
+                            <h5 class="card-title">
+                                <img src="https://h5p.org/sites/default/files/status-icon-page_0.png" width="7%">
+                                Sensor raw data from sensor Middle or not?
+                            </h5>
+                            <table>
+                                <tr>
+                                    <td style="width: 25%;">
+                                        <img src="https://cdn.icon-icons.com/icons2/570/PNG/512/document_9_icon-icons.com_54619.png?fbclid=IwAR2mZKM0v4UGZny6HPCWrL6QrMAtarlcipSc1w8GyeeVwznwtnVy3sxturk" width="50%">
+                                    </td>
+                                    <td style="width: 50%;">
+                                        <p class="card-text head pop-up" id="dataCell-3">
+                                            <!-- Data will be displayed here -->
+                                        </p>
+                                    </td>
+                                    <td style="width: 25%;text-align: right;">
+                                        <img src="https://cdn.icon-icons.com/icons2/570/PNG/512/document_9_icon-icons.com_54619.png?fbclid=IwAR2mZKM0v4UGZny6HPCWrL6QrMAtarlcipSc1w8GyeeVwznwtnVy3sxturk" width="50%">
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <div class="card-body bg-custom3">
+                            <h5 class="card-title">
+                                <img src="https://cdn-icons-png.flaticon.com/512/10439/10439403.png" width="7%">
+                                Digital 1 is
+                            </h5>
+                            <p class="card-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;1 shows the level of garbage inside the tank. The status of the tank is full. You cannot put any more garbage in.
+                            </p>
+
+                            <h5 class="card-title">
+                                <img src="https://cdn-icons-png.flaticon.com/512/10439/10439403.png" width="7%">
+                                Digital 0 is
+                            </h5>
+                            <p class="card-text">
+                                &nbsp;&nbsp;&nbsp;&nbsp;0 indicates the level of garbage inside the tank. The status of the tank is empty. You can add more garbage.
+                            </p>
+                        </div>
+                      </div>
+
+                </div>
+                <!--End container 8-2-->
+
+            </div>
+
+        </div>
+    </div>
+    <!--End Value-->
+
+    <div class="h-container"></div>
+    <!--Start footer-->
+    <div class="container-fluid bg-dark text-white">
+        <div class="card text-center bg-dark">
+            <div class="card-header bg-dark">
+              Contact
+            </div>
+            <div class="card-body bg-dark">
+              <h5 class="card-title">
+                Walailak University
+            </h5>
+              <p class="card-text">
+                Course: Connections, integration and communication between things.
+              </p>
+            </div>
+            <div class="card-footer text-muted bg-dark">
+              100 Years ago
+            </div>
+          </div>
+    </div>
+    <!--End footer-->
+
+       
+
+    <script>
+        function check_bin(fieldData){
+
+            if(fieldData == 0){
+                document.getElementById("check-bin-1").innerHTML = `<img src="https://cdn.dribbble.com/users/220777/screenshots/2336575/trashblue.gif?fbclid=IwAR3hipHy9gwbjVxkOl-aICG8HmdRu0VBHDZmcJa1j5Zn-fVVot6V_ILDWwg" width="55%">`;
+                document.getElementById("dataCell-2").innerText = `Bin is Full!`;
+                document.getElementById("dataCell-1").innerText = `Data from API: ${fieldData}`;
+                alert("Bin is Full!");
+                
+            }else {
+                document.getElementById("check-bin-1").innerHTML = `<img src="https://media.baamboozle.com/uploads/images/507316/a42fb849-bd72-44d9-a9d2-fec1bedb552a.gif?fbclid=IwAR2go-fH8U_T7FWGqHLNVNaqg6PGDZHkl5NTgHcsfy5pdYvRobg-MWwFHvw" width="40%">`;
+                document.getElementById("dataCell-2").innerText = `Bin not full!`;
+                document.getElementById("dataCell-1").innerText = `Data from API: ${fieldData}`;
+                
+            }
+        }
+
+        function check_bin2(fieldData2 ,field1){
+            if(fieldData2 == 0 && field1 == 1){
+                document.getElementById("check-bin-1").innerHTML = `<img src="https://media.baamboozle.com/uploads/images/594955/1669612881_42027_gif-url.gif" width="40%">`;
+                document.getElementById("dataCell-2").innerText = `Bin is Middle Level!`;
+                document.getElementById("dataCell-3").innerText = `Data from API: ${fieldData2}`;
+            }else document.getElementById("dataCell-3").innerText = `Data from API: ${fieldData2}`;
+
+        }
+        // Read API Keys
+        const apiKey = "0LXDCXSBDV1P44M4";
+        const channelId = "2465859";
+
+        // Fetch data from Thingspeak API
+        fetch(`https://api.thingspeak.com/channels/${channelId}/feeds.json?api_key=${apiKey}&results=1`)
+            .then(response => response.json())
+            .then(data => {
+                // Extract the data you need from the response
+                const field1Data = data.feeds[0].field1;
+                const field2Data = data.feeds[0].field2;
+                // Display the data
+                //document.getElementById("dataCell-1").innerText = `Data from API: ${field1Data}`;
+                check_bin(field1Data);
+                check_bin2(field2Data , field1Data);
+                
+            })
+            .catch(error => {
+                console.error("Error fetching data:", error);
+                document.getElementById("dataCell-2").innerText = "Error fetching data";
+            });
+            // Fetch data initially
+        fetchData();
+
+        // Fetch data every 5 seconds (5000 milliseconds)
+        setInterval(fetchData, 2000);
+
+        
+    </script>
+
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-Fy6S3B9q64WdZWQUiU+q4/2Lc9npb8tCaSX9FK7E8HnRr0Jz8D6OP9dO5Vg3Q9ct" crossorigin="anonymous"></script>
+</body>
+</html>
