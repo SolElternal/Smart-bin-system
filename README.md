@@ -8,3 +8,5 @@ The project "Detects the amount of garbage in the bin and notifies the Website."
 # Sensor
 - ![image](https://github.com/user-attachments/assets/71ffa8a7-5232-459b-b890-95c17870dae2)
 - ![image](https://github.com/user-attachments/assets/aa484473-22cf-49c1-b204-4227a45bc01a)
+# Poster
+- ![image](https://github.com/user-attachments/assets/eecef802-5885-4367-8588-910e286ea747)
