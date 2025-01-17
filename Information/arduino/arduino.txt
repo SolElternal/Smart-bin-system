@@ -1,0 +1,56 @@
+#include <WiFi.h>
+
+const char *ssid = "IOT Engineering"; // Replace with your WiFi credentials
+const char *password = "coeai123";
+const char *thingSpeakAPIKey = "C5NXNR080AZGXEQC";
+
+int detectorPin1 = 2;  // obstacle avoidance sensor interface
+int detectorPin2 = 15;
+int val1;              // variable to store result
+int val2;
+
+void setup()
+{
+  pinMode(detectorPin1, INPUT);  // Define obstacle avoidance sensor as input interface
+  pinMode(detectorPin2, INPUT);
+  Serial.begin(115200);
+
+  // [uncomment and remove jumper on module to use enable pin (EN)]
+  //pinMode(enablePin, OUTPUT);
+  //digitalWrite(enablePin, HIGH);  // Enable sensor
+
+  WiFi.begin(ssid, password);
+}
+
+void loop()
+{
+  val1 = digitalRead(detectorPin1); // Read value from sensor\
+  val2 = digitalRead(detectorPin2);
+  Serial.println(val1);
+  Serial.println(" and ");
+  Serial.println(val2);
+  delay (4000);
+  // Send data to ThingSpeak
+  sendToThingSpeak(val1 , val2);
+  delay(5000); // Delay for 5 seconds
+}
+void sendToThingSpeak(float val1 , float val2) {
+WiFiClient client;
+const char *server = "api.thingspeak.com";
+String data = "GET /update?api_key=" + String(thingSpeakAPIKey);
+data += "&field1=" + String(val1);
+data += "\r\n";
+
+String data2 = "GET /update?api_key=" + String(thingSpeakAPIKey);
+data2 += "&field2=" + String(val2);
+data2 += "\r\n";
+if (client.connect(server, 80)) {
+client.print(data);
+client.print(data2);
+client.stop();
+Serial.println("Data sent to ThingSpeak!");
+} else {
+
+Serial.println("Failed to connect to ThingSpeak server!");
+}
+}
